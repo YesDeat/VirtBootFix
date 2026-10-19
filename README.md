@@ -51,3 +51,9 @@ Admin (UAC) is requested on launch. Detect → choose mode → answer 0-4 per un
 ## 依赖 / Dependencies
 
 仅 Python 标准库 / stdlib only. 用 **`py`** 启动器运行 / run with the **`py`** launcher.
+
+## 更新记录 / Changelog
+
+- **修复检测全崩**：主流程函数名 `run` 与命令执行函数 `run(cmd, timeout)` 重名，Python 后定义覆盖前者，导致所有检测项报 `detect error: run() takes 0 positional arguments`。已将主流程重命名为 `main()`。若此前打开后"什么都检测不到"，更新后即可正常。
+- **必须以管理员运行**：TPM / Secure Boot / 磁盘分区 / bcdedit 等检测需要管理员权限。双击运行时**务必在 UAC 弹窗点「是」**；若未提权，这几项会读不到（显示「未知 / 需先开启 UEFI」），并非工具失效。
+- **Fix detection crash**: the main routine was named `run`, colliding with the command runner `run()`; renamed to `main()`. Run **as administrator** (approve UAC) so TPM / Secure Boot / disk / bcdedit can be read.

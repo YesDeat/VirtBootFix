@@ -377,7 +377,7 @@ def mode_index(mode):
     return 0 if mode == 1 else 1
 
 
-def run():
+def main():
     print("=" * 62)
     print("  安全启动 + CPU 虚拟化 检测/设置工具")
     print("  Secure Boot + Virtualization Detect & Fix Tool")
@@ -427,6 +427,6 @@ def run():
 if __name__ == "__main__":
     try_elevate()
     try:
-        run()
+        main()
     except KeyboardInterrupt:
         print("\n退出 / aborted")
